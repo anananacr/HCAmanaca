@@ -1,0 +1,3 @@
+import fastmanaca
+
+fastmanaca.main()

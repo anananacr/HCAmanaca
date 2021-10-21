@@ -208,8 +208,7 @@ def map(mode, dist,shell, run):
         images.append(im)
         images[0].save('evolution_'+shell+'.gif', save_all=True, append_images=images[1:], optimize=False, duration=700, loop=0)
 	    
-    sub.call('mkdir images'+shell, shell=True)
-    sub.call('mv evol*.png images'+shell, shell=True)
+    sub.call('rm evol*.png', shell=True)
     state='FINISHED'
     return state
 
@@ -503,6 +502,7 @@ def WriteTab(nin):
     f.close()
     g.close()
     return index
+
 def dyn_plot(mode, dist,shell, run):
     #dist cell or cc
     art=0
@@ -588,13 +588,15 @@ def dyn_plot(mode, dist,shell, run):
 		    s=s[0:]+i
     best=[]
     s=''
+    path_len=len(path[0])
     for k in range(len(path)):
-        j=43
-        while j<46:
-            if str(path[k][j])!='_' and str(path[k][j])!='a':
+        print(path[k])
+        j=path_len-11
+        while j<path_len-8:
+            if str(path[k][j])!='_' and str(path[k][j+1])!='a':
                 s=s[0:]+str(path[k][j])
             j=j+1
-        best.append(int(s))
+        best.append(float(s))
         s=''
     
     for i in range(len(cc)):
@@ -716,12 +718,10 @@ def dyn_plot(mode, dist,shell, run):
         images.append(im)
         images[0].save('evolution_r_'+shell+'.gif', save_all=True, append_images=images[1:], optimize=False, duration=1600, loop=0)
 	    
-    sub.call('mkdir images_cc_'+shell, shell=True)
-    sub.call('mv evol_cc_*.png images_cc_'+shell, shell=True)
-    sub.call('mkdir images_compl_'+shell, shell=True)
-    sub.call('mv evol_compl_*.png images_compl_'+shell, shell=True)
-    sub.call('mkdir images_r_'+shell, shell=True)
-    sub.call('mv evol_r_*.png images_r_'+shell, shell=True)
+   
+    sub.call('rm evol_cc_*.png', shell=True)
+    sub.call('rm evol_compl_*.png', shell=True)
+    sub.call('rm evol_r_*.png', shell=True)
     state='FINISHED'
     return state
 
