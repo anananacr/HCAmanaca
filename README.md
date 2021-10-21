@@ -1,6 +1,6 @@
 # HCAmanaca
 
-Automatic data processing pipeline for Serial Crystallography on Manacá beamline (Sirius, LNLS, Brazil). Scripts communicates with ccClusterL[1] software and handle small oscillation datasets.
+Automatic data processing pipeline for Serial Crystallography on Manacá beamline (Sirius, LNLS, Brazil). Scripts communicates with ccCluster[1] software and handle small oscillation datasets.
 
 Dependencies:
 ccCluster https://github.com/gsantoni/ccCluster
