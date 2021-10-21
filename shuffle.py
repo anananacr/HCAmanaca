@@ -2,7 +2,7 @@ import subprocess as sub
 import numpy as np
 import os
 import sys
-import plot_fast
+import HCAplot
 
 def run(dist, meudiretorio):
     #dist cell or cc
@@ -297,25 +297,25 @@ def run(dist, meudiretorio):
     sub.call("rm rout.tab", shell=True)
 
     print("Plot Completeness")
-    plot_fast.plot('completeness','fast', 1)
+    HCAplot.plot('completeness','fast', 1)
 
     print("Plot CC1/2")
-    plot_fast.plot('cc','fast', 1)
+    HCAplot.plot('cc','fast', 1)
     
     print("Plot Rmeas")
-    plot_fast.plot('r', 'fast', 1)
+    HCAplot.plot('r', 'fast', 1)
 
     sub.call(("mkdir shuffle_"+meudiretorio),shell=True)
     sub.call("mv *.png shuffle_"+meudiretorio, shell=True)
 
     print("Plot CC1/2 vs Compl (Inner)")
-    plot_fast.map("fast","cc", "Inner", 1)
+    HCAplot.map("fast","cc", "Inner", 1)
 
     print("Plot CC1/2 vs Compl (Outer)")
-    plot_fast.map("fast","cc", "Outer", 1)
+    HCAplot.map("fast","cc", "Outer", 1)
     
     print("Plot Unit Cell Parameters")
-    plot_fast.unit("fast",1)
+    HCAplot.unit("fast",1)
   
 
     sub.call("mv *.png shuffle_"+meudiretorio, shell=True)

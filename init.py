@@ -1,3 +1,3 @@
 import fastmanaca
 
-fastmanaca.main()
+HCAmanaca.main()
